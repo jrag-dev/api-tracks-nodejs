@@ -1,0 +1,29 @@
+{
+  "name": "api-track-node",
+  "version": "1.0.0",
+  "description": "api with nodejs, mongodb, and mysql for track manager",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./app.js",
+    "start": "node ./app.js"
+  },
+  "keywords": [
+    "nodejs",
+    "mongodb",
+    "mysql",
+    "api",
+    "jsonwebtoken"
+  ],
+  "author": "José Alvarado",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.4",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
