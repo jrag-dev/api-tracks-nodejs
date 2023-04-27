@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const mongooseDelete = require('mongoose-delete')
 const { Schema, model } = mongoose
 
 const userSchema = new Schema(
@@ -14,7 +15,8 @@ const userSchema = new Schema(
 			unique: true
 		},
 		password: {
-			type: String
+			type: String,
+			select: false
 		},
 		role: {
 			type: ['user', 'admin'],
@@ -27,4 +29,5 @@ const userSchema = new Schema(
 	}
 )
 
+userSchema.plugin(mongooseDelete, { overrideMethods: 'all' })
 module.exports = model('User', userSchema)
