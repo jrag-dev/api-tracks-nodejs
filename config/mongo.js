@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-async function dbConnect(uri) {
+async function dbConnectNoSql(uri) {
 	mongoose.set('strictQuery', true)
 	try {
 		await mongoose.connect(uri)
@@ -12,5 +12,5 @@ async function dbConnect(uri) {
 }
 
 module.exports = {
-	dbConnect
+	dbConnectNoSql
 }

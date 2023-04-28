@@ -1,6 +1,9 @@
 const { handlehttpError } = require('../utils/handleError')
 const { verifyToken } = require('../utils/handleJsonWebToken')
 const { usersModel } = require('../models')
+const { getProperties } = require('../utils/handlePropertiesEngine')
+
+const propertiesKey = getProperties()
 
 const obtenerTokenHeaders = async (req, res, next) => {
 	try {
@@ -15,7 +18,12 @@ const obtenerTokenHeaders = async (req, res, next) => {
 			return handlehttpError(res, 'El token no es válido', 401)
 		}
 		
-		const userDB = await usersModel.findById(dataToken._id)
+		//TODO: Para poder realizar consultas coon mongo o con mysql
+		const query = {
+			[propertiesKey.id]: dataToken[propertiesKey.id]
+		}
+
+		const userDB = await usersModel.findOne(query)
 		
 		req.user = userDB
 		
